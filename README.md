@@ -2,58 +2,61 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>三世代ハワイ旅行プラン</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
     }
     
     body {
       background: linear-gradient(to bottom right, #fff9c4, #ffcdd2);
       min-height: 100vh;
-      padding: 1.5rem;
+      padding: 12px;
+      line-height: 1.4;
     }
     
     .container {
       max-width: 800px;
       margin: 0 auto;
       background-color: white;
-      border-radius: 1rem;
+      border-radius: 16px;
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
+      padding: 16px;
       border: 4px solid #f8bbd0;
     }
     
     .title {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: bold;
       text-align: center;
       color: #d81b60;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       background-color: #fff9c4;
-      padding: 1rem;
+      padding: 0.75rem;
       border-radius: 0.75rem;
+      word-break: break-all;
     }
     
     .tab-buttons {
       display: flex;
       justify-content: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     
     .tab-button {
-      padding: 0.5rem 1rem;
-      margin: 0 0.5rem;
-      border-radius: 0.5rem;
+      padding: 8px 16px;
+      margin: 0 4px;
+      border-radius: 8px;
       border: none;
       cursor: pointer;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
+      white-space: nowrap;
     }
     
     .tab-button.active {
@@ -76,82 +79,136 @@
     
     .flight-info {
       background-color: #fce4ec;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
     }
     
     .family-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 16px;
     }
     
     .family-title {
       display: flex;
       align-items: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
       font-weight: bold;
       color: #c2185b;
     }
     
     .family-title span {
-      margin-right: 0.5rem;
+      margin-right: 8px;
     }
     
     .flight-list {
       list-style-type: disc;
-      padding-left: 1.5rem;
+      padding-left: 20px;
       color: #4a148c;
+      font-size: 0.9rem;
     }
     
     .flight-list li {
-      margin-bottom: 0.25rem;
+      margin-bottom: 8px;
+      word-break: break-word;
     }
     
     .schedule-day {
       background-color: white;
       border: 4px solid #f8bbd0;
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
     }
     
     .day-title {
       display: flex;
-      align-items: center;
-      margin-bottom: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 8px;
       font-weight: bold;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       color: #880e4f;
     }
     
     .day-title span {
       font-size: 1.5rem;
-      margin-right: 0.5rem;
+      margin-right: 8px;
+      min-width: 24px;
+    }
+    
+    .day-title h3 {
+      flex: 1;
+      font-size: 1.1rem;
     }
     
     .day-list {
       list-style-type: disc;
-      padding-left: 1.5rem;
+      padding-left: 20px;
       color: #4a148c;
+      font-size: 0.9rem;
     }
     
     .day-list li {
-      margin-bottom: 0.25rem;
+      margin-bottom: 6px;
+      word-break: break-word;
     }
     
     .sub-list {
-      padding-left: 1.5rem;
+      padding-left: 20px;
       list-style-type: disc;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+    
+    /* スマートフォン用のメディアクエリ */
+    @media (max-width: 480px) {
+      body {
+        padding: 8px;
+      }
+      
+      .container {
+        padding: 12px;
+        border-width: 3px;
+      }
+      
+      .title {
+        font-size: 1.2rem;
+        padding: 10px;
+      }
+      
+      .tab-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .day-title {
+        font-size: 1rem;
+      }
+      
+      .day-title span {
+        font-size: 1.2rem;
+      }
+      
+      .day-list, .flight-list {
+        font-size: 0.85rem;
+      }
+      
+      .sub-list {
+        padding-left: 16px;
+      }
+      
+      .flight-list li, .day-list li {
+        margin-bottom: 8px;
+      }
     }
   </style>
 </head>
-<body>
+<body ontouchstart="">
   <div class="container">
     <h1 class="title">📘 三世代ハワイ旅行（2025年3月31日〜4月3日） ✈️</h1>
     
     <div class="tab-buttons">
-      <button class="tab-button active" onclick="showTab('schedule')">📅 日別スケジュール</button>
-      <button class="tab-button" onclick="showTab('flight')">✈️ フライト情報</button>
+      <button class="tab-button active" onclick="showTab('schedule', this)">📅 日別スケジュール</button>
+      <button class="tab-button" onclick="showTab('flight', this)">✈️ フライト情報</button>
     </div>
     
     <!-- 日別スケジュール -->
@@ -261,7 +318,7 @@
   </div>
   
   <script>
-    function showTab(tabId) {
+    function showTab(tabId, button) {
       // すべてのタブコンテンツを非表示にする
       const tabContents = document.querySelectorAll('.tab-content');
       tabContents.forEach(content => {
@@ -270,16 +327,9 @@
       
       // すべてのタブボタンから active クラスを削除
       const tabButtons = document.querySelectorAll('.tab-button');
-      tabButtons.forEach(button => {
-        button.classList.remove('active');
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
       });
       
       // 選択されたタブを表示
-      document.getElementById(tabId).classList.add('active');
-      
-      // クリックされたボタンに active クラスを追加
-      event.target.classList.add('active');
-    }
-  </script>
-</body>
-</html>
+      document.getElementById(tabId).classList.ad
