@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>三世代ハワイ旅行プラン</title>
+  <style>
+    :root {
+      --pink-light: #fce4ec;
+      --pink-medium: #f8bbd0;
+      --pink-dark: #ec407a;
+      --pink-darker: #c2185b;
+      --yellow-light: #fff9c4;
+      --purple-text: #4a148c;
+      --border-radius: 12px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      background: linear-gradient(135deg, var(--yellow-light), var(--pink-light));
+      background-attachment: fixed;
+      line-height: 1.5;
+      color: #333;
+    }
+    
+    .page-container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 10px;
+    }
+    
+    .container {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      max-width: 800px;
+      width: 100%;
+      overflow: hidden;
+      border: 3px solid var(--pink-medium);
+    }
+    
+    .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-align: center;
+      color: var(--pink-darker);
+      margin: 0;
+      background-color: var(--yellow-light);
+      padding: 15px 10px;
+      border-bottom: 2px solid var(--pink-medium);
+    }
+    
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--pink-medium);
+    }
+    
+    .tab-button {
+      padding: 8px 16px;
+      margin: 0 5px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      background-color: var(--pink-light);
+      color: var(--pink-darker);
+    }
+    
+    .tab-button.active {
+      background-color: var(--pink-dark);
+      color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .tab-content {
+      display: none;
+      padding: 15px;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .flight-info {
+      background-color: var(--pink-light);
+      border-radius: var(--border-radius);
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .family-group {
+      margin-bottom: 20px;
+    }
+    
+    .family-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: var(--pink-darker);
+      font-size: 1.1rem;
+    }
+    
+    .family-title span {
+      margin-right: 8px;
+      font-size: 1.2rem;
+    }
+    
+    .flight-list {
+      list-style-type: disc;
+      padding-left: 25px;
+      color: var(--purple-text);
+    }
+    
+    .flight-list li {
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    
+    .schedule-day {
+      background-color: white;
+      border: 2px solid var(--pink-medium);
+      border-radius: var(--border-radius);
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .day-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: var(--pink-darker);
+      font-size: 1.1rem;
+    }
+    
+    .day-title span {
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+    
+    .day-list {
+      list-style-type: disc;
+      padding-left: 25px;
+      color: var(--purple-text);
+    }
+    
+    .day-list li {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    
+    .sub-list {
+      padding-left: 20px;
+      list-style-type: circle;
+      margin: 8px 0;
+    }
+    
+    @media (max-width: 480px) {
+      .page-container {
+        padding: 0;
+      }
+      
+      .container {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+      }
+      
+      .title {
+        font-size: 1.2rem;
+        padding: 12px 8px;
+      }
+      
+      .tab-button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+      
+      .tab-content {
+        padding: 10px;
+      }
+      
+      .day-title, .family-title {
+        font-size: 1rem;
+      }
+      
+      .day-title span {
+        font-size: 1.3rem;
+      }
+      
+      .day-list li, .flight-list li {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .container {
+        max-width: 95%;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .container {
+        max-width: 800px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="container">
+      <h1 class="title">📘 三世代ハワイ旅行（2025年3月31日〜4月3日） ✈️</h1>
+      
+      <div class="tab-buttons">
+        <button class="tab-button active" id="schedule-btn" onclick="showTab('schedule')">📅 日別スケジュール</button>
+        <button class="tab-button" id="flight-btn" onclick="showTab('flight')">✈️ フライト情報</button>
+      </div>
+      
+      <!-- 日別スケジュール -->
+      <div id="schedule" class="tab-content active">
+        <div class="schedule-day">
+          <div class="day-title">
+            <span>🏖</span>
+            <h3>3月31日(月) - コオリナへ移動 & 三世代合流</h3>
+          </div>
+          <ul class="day-list">
+            <li>午前：シェラトンをチェックアウト</li>
+            <li>昼前：マリオット・コオリナにチェックイン</li>
+            <li>午後：ビーチ & プールでのんびり</li>
+            <li>夕方：カ・マカナ・アリイでBBQ食材の買い出し</li>
+            <li>夜：マリオットのBBQエリアでBBQディナー 🍖 家族団らん！</li>
+          </ul>
+        </div>
+        
+        <div class="schedule-day">
+          <div class="day-title">
+            <span>🚐</span>
+            <h3>4月1日(火) - アウラニでモーニング & ノースショアへドライブ</h3>
+          </div>
+          <ul class="day-list">
+            <li>10:00：アウラニのレストランでキャラクターブレックファスト（予約済み）</li>
+            <li>12:00：大きな車でノースショアへ出発 🚐</li>
+            <li>午後：
+              <ul class="sub-list">
+                <li>ハレイワタウンを散策（ショップ・カフェ）</li>
+                <li>ガーリックシュリンプランチ（ジョバンニ or フミズ）🍤</li>
+                <li>マツモトシェイブアイスでスイーツタイム 🍧</li>
+                <li>Mele Mele Bakery にも立ち寄り 🍞</li>
+                <li>ワイメア or ラニアケアビーチでのんびり 🌊</li>
+              </ul>
+            </li>
+            <li>18:30：コオリナに帰着</li>
+            <li>夜：スーパーで買い出し → ホテルの部屋でディナー</li>
+          </ul>
+        </div>
+        
+        <div class="schedule-day">
+          <div class="day-title">
+            <span>🛍</span>
+            <h3>4月2日(水) - お買い物Day</h3>
+          </div>
+          <ul class="day-list">
+            <li>朝：ホテルでゆっくり朝食</li>
+            <li>午前：ワイケレ・プレミアム・アウトレットでショッピング 🛍</li>
+            <li>昼：Tanioka's Seafoods or カイナハワイアンBBQ</li>
+            <li>午後：コオリナラグーンでのんびり or アウラニを散歩</li>
+            <li>夜：Mina's Fish House（フォーシーズンズ）で家族全員そろっての豪華ディナー ✨</li>
+          </ul>
+        </div>
+        
+        <div class="schedule-day">
+          <div class="day-title">
+            <span>✈️</span>
+            <h3>4月3日(木) - 野口家は帰国 / 他の家族は延泊</h3>
+          </div>
+          <ul class="day-list">
+            <li>朝：朝食をとってチェックアウト</li>
+            <li>【野口家】：ホノルル空港へ移動 → 12:15発 JL73で帰国</li>
+            <li>【祖父母・井元家】：ワイキキへ移動し、さらにもう1泊 🏨</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- フライト情報 -->
+      <div id="flight" class="tab-content">
+        <div class="flight-info">
+          <div class="family-group">
+            <div class="family-title">
+              <span>👴👵</span>
+              <h3>祖父母（大阪 ⇄ ホノルル）</h3>
+            </div>
+            <ul class="flight-list">
+              <li>3月31日(月) 22:10 大阪（関空）→ 4月1日(火) 10:45 ホノルル（JL792）</li>
+              <li>4月4日(金) 11:35 ホノルル → 4月5日(土) 15:40 大阪（JL791）</li>
+            </ul>
+          </div>
+          
+          <div class="family-group">
+            <div class="family-title">
+              <span>👨‍👩‍👧‍👦</span>
+              <h3>野口家（東京 ⇄ ホノルル）</h3>
+            </div>
+            <ul class="flight-list">
+              <li>3月27日(木) 21:00 東京（羽田）→ 3月27日(木) 09:00 ホノルル（JL74）</li>
+              <li>4月4日(金) 12:15 ホノルル → 4月5日(土) 15:55 東京（羽田）</li>
+            </ul>
+          </div>
+          
+          <div class="family-group">
+            <div class="family-title">
+              <span>👨‍👩‍👧‍👦</span>
+              <h3>井元家（沖縄 ⇄ ホノルル）</h3>
+            </div>
+            <ul class="flight-list">
+              <li>3月29日(土) 16:15 沖縄 → 18:15 名古屋（NU44）</li>
+              <li>3月29日(土) 20:30 名古屋 → 3月30日(日) 08:30 ホノルル（JL794）</li>
+              <li>4月4日(金) 11:40 
