@@ -324,12 +324,3 @@
       tabContents.forEach(content => {
         content.classList.remove('active');
       });
-      
-      // すべてのタブボタンから active クラスを削除
-      const tabButtons = document.querySelectorAll('.tab-button');
-      tabButtons.forEach(btn => {
-        btn.classList.remove('active');
-      });
-      
-      // 選択されたタブを表示
-      document.getElementById(tabId).classList.ad
