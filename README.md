@@ -202,13 +202,13 @@
     }
   </style>
 </head>
-<body ontouchstart="">
+<body>
   <div class="container">
     <h1 class="title">📘 三世代ハワイ旅行（2025年3月31日〜4月3日） ✈️</h1>
     
     <div class="tab-buttons">
-      <button class="tab-button active" onclick="showTab('schedule', this)">📅 日別スケジュール</button>
-      <button class="tab-button" onclick="showTab('flight', this)">✈️ フライト情報</button>
+      <button class="tab-button active" id="schedule-btn" onclick="showTab('schedule')">📅 日別スケジュール</button>
+      <button class="tab-button" id="flight-btn" onclick="showTab('flight')">✈️ フライト情報</button>
     </div>
     
     <!-- 日別スケジュール -->
@@ -318,9 +318,23 @@
   </div>
   
   <script>
-    function showTab(tabId, button) {
+    function showTab(tabId) {
       // すべてのタブコンテンツを非表示にする
-      const tabContents = document.querySelectorAll('.tab-content');
-      tabContents.forEach(content => {
+      document.querySelectorAll('.tab-content').forEach(function(content) {
         content.classList.remove('active');
       });
+      
+      // すべてのタブボタンから active クラスを削除
+      document.querySelectorAll('.tab-button').forEach(function(button) {
+        button.classList.remove('active');
+      });
+      
+      // 選択されたタブを表示
+      document.getElementById(tabId).classList.add('active');
+      
+      // クリックされたボタンに active クラスを追加
+      document.getElementById(tabId + '-btn').classList.add('active');
+    }
+  </script>
+</body>
+</html>
